@@ -1,0 +1,98 @@
+.mat-dialog {
+    position: relative;
+    mat-dialog-content {
+        overflow: visible;
+    }
+
+    mat-dialog-actions {
+        height: 50px;
+        position: relative;
+    }
+}
+
+.mat-dialog-sm {
+    transition: all 0.2s;
+    position: fixed;
+    top: 10px!important;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    mat-dialog-content {
+        overflow: visible;
+    }
+
+    mat-dialog-actions {
+        height: 50px;
+        position: relative;
+    
+    }
+}
+
+.text-container {
+    height: 200px !important;
+}
+
+.dialog-content-sm {
+    position: relative;
+    width: 100vw !important;
+}
+
+.note-options {
+    .col-pick {
+        appearance: none;
+        border: none;
+        background-color: transparent;
+    }
+
+    .col-pick::-webkit-color-swatch {
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0px 0px 2px 2px #0004;
+    }
+
+    input {}
+
+    mat-form-field {
+        position: relative;
+        width: 100%;
+    }
+}
+
+mat-card {
+    position: relative;
+    height: 500px !important;
+    background-color: rgb(255, 255, 161);
+
+    mat-card-header {
+        display: block;
+        height: 10%;
+
+        .card-title {
+            display: block;
+
+            mat-form-field {
+                margin-top: 0px;
+            }
+        }
+    }
+
+    mat-card-content {
+        height: 300px !important;
+        overflow: scroll !important;
+
+        mat-form-field {
+
+            textarea {
+                width: 80% !important;
+                padding: 0 0px;
+            }
+        }
+    }
+}
+
+.card-sm {
+    height: 400px!important;
+}
+.text-sm {
+    font-size: 20px;
+}

@@ -1,0 +1,20 @@
+.pic{
+    text-align: center;
+    transition: all 0.5s;
+    transform-origin: 50% 0%;
+}
+.highlight{
+    background-color: #0003;
+    transform: scale(1.1);
+    border-radius: 3px;
+    box-shadow:2px 2px 2px #0004;
+}
+.pics-container{
+    padding-top: 30px;
+}
+.title{
+    text-align: center;
+}
+.mat-dialog-container{
+    position: relative!important;
+}

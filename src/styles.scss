@@ -1,1 +1,90 @@
 /* You can add global styles to this file, and also import other style files */
+//@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+    margin: 0;
+    padding-bottom: 300px;
+}
+
+* {
+    touch-action: auto !important;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+.container {
+    min-height: 100vh;
+    max-width: 100vw;
+    padding: 30px;
+}
+
+.container-sm {
+    min-height: 100vh;
+    max-width: 100vw;
+    padding: 30px 10px;
+}
+
+.r {
+    border: 1px solid red;
+}
+
+.g {
+    border: 1px solid green;
+}
+
+.b {
+    border: 1px solid blue;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100% !important;
+    background-color: green !important;
+}
+.deleteDialog{
+    height: 350px!important;
+}
+
+.deleteDialog,
+.loginDialog {
+    background-color: #ffffa1 !important;
+    border-radius: 5px !important;
+}
+
+.editDialog,
+.propicDialog {
+    background-color: #eda8cc !important;
+    border-radius: 5px;
+}
+.propicDialog:nth-child(1),.loginDialog:nth-child(1),.deleteDialog:nth-child(1){
+    position: relative!important;
+}
+
+.mat-dialog-container {
+    background-color: transparent !important;
+
+}
+
+.cdk-overlay-container {
+    white-space: pre-wrap !important;
+}
+
+@media screen and (max-width:600px) {
+    .mat-dialog-container {
+        background-color: transparent !important;
+        position: absolute;
+        height: 400px;
+        width: 100vw;
+        margin: 0;
+        left: 0;
+        top: 0;
+    }
+}

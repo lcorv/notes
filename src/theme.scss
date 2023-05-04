@@ -1,0 +1,75 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$my-palette:(
+    50: #f3f3f3,
+  100: #f4f9a9,
+  200: #fbf1b7,
+  300: #f9eca2,
+  400: #f6e688,
+  500: #ffffa1,
+  600: #cdb321,
+  700: #e1c422,
+  800: #eda8cc,
+  900: #666666,
+  contrast: (
+    50: #222222,
+    100:#222222,
+    200: #222222,
+    300: #222222,
+    400: #222222,
+    500: #333333,
+    600: #222222,
+    700: #df94c1,
+    800: #ffffff,
+    900: #ffffa1,
+  )
+);
+$sticky-accent: mat.define-palette($my-palette,900);
+$sticky-primary: mat.define-palette($my-palette, 500);
+
+$sticky-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $sticky-primary,
+      accent: $sticky-accent,
+      button: $sticky-primary
+    )
+  )
+);
+$sticky-pink-accent: mat.define-palette($my-palette,800);
+$sticky-pink: mat.define-palette($my-palette, 500);
+$sticky-pink-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $sticky-pink,
+      accent: $sticky-pink-accent,
+    )
+  )
+);
+$sticky-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $sticky-primary,
+      accent: $sticky-pink-accent,
+      button: $sticky-accent
+    )
+  )
+);
+.bg-accent{
+  background-color:  mat.get-color-from-palette($my-palette,800);
+};
+.bg-primary{
+  background-color: mat.get-color-from-palette($my-palette,500)
+};
+@include mat.tooltip-theme($sticky-theme);
+@include mat.menu-theme($sticky-theme);
+@include mat.input-theme($sticky-pink-theme);
+@include mat.core-theme($sticky-theme);
+@include mat.button-theme($sticky-pink-theme);
+@include mat.button-toggle-theme($sticky-theme);
+@include mat.sidenav-theme($sticky-theme);
+@include mat.toolbar-theme($sticky-theme);
+@include mat.select-theme($sticky-theme);
+@include mat.form-field-theme($sticky-pink-theme);
+@include mat.progress-spinner-theme($sticky-theme);

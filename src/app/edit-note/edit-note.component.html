@@ -1,0 +1,41 @@
+<div class="mat-dialog" DialogPosition="{top:0px}" fxLayout="row wrap" [ngClass.lt-sm]="'mat-dialog-sm'" [ngStyle]="{'height':'500px', 'width':'500px'}" [ngStyle.lt-sm]="{'margin':0,'padding':0,'transition':'all 0.2s'}" fxLayoutAlign="center start">
+    <mat-dialog-content  #editNote *ngIf="editNota" [ngClass.lt-sm]="'dialog-content-sm'" [ngStyle.lt-sm]="{ 'width':'100%', 'padding':0}">
+        <mat-card class="mat-elevation-z5" [ngClass.lt-sm]="'card-sm'" fxLayoutAlign="start start" [ngStyle.lt-sm]="{ 'left':0,'margin':0,'backgroundColor':editNota.color}" [ngStyle]="{'backgroundColor':editNota.color}"
+            fxFlex="100" fxLayout="row" color="primary" appContrast>
+            <div fxFlex="80" fxLayout="row wrap">
+                <mat-card-header  fxFlex="100">
+                    <div fxFlex="100"  class="card-title" fxLayoutAlign="start start">
+                        <form fxFlex="100"  action="" >
+                            <mat-form-field fxFlex="100"  color="accent">
+                                <input  matInput name="title" [(ngModel)]="editNota.title" type="text">
+                            </mat-form-field>
+                        </form>
+                    </div>
+                </mat-card-header>
+                <mat-card-content fxFlex="100">
+                    <form action="" fxFlex="100">
+                        <mat-form-field fxFlex="100" color="accent" class="full-width text-container">
+                            <textarea placeholder="Your note" [ngClass.lt-sm]="'text-sm'" name="content" matInput type="text" rows="15" cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="10" cdkAutosizeMaxRows="20"
+                            [(ngModel)]="editNota.content"></textarea>
+                        </mat-form-field>
+                    </form>
+                </mat-card-content>        
+            </div>
+            <div fxFlex="20"  fxLayout="row wrap">
+                <div class="note-options" fxFlex="100">
+                    <input id="color-pick"[(ngModel)]="editNota.color" class="col-pick" type="color" />
+                    <mat-form-field>
+                        <input matInput color="accent" placeholder="Position" [(ngModel)]="editNota.zIndex" class ="r">
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card>
+    </mat-dialog-content>
+    <mat-dialog-actions  fxFlex="100" fxLayoutAlign="space-around">
+        <div>
+            <button mat-raised-button *ngIf="editNota" color="primary" (click)="update(editNota)">Save</button>
+            <button mat-raised-button (click)="close()" color="warn" *ngIf="editNota">Cancel</button>
+        </div>
+    </mat-dialog-actions>
+</div>

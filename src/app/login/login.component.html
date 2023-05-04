@@ -1,0 +1,40 @@
+
+    <div class="login">
+      <mat-dialog-content>
+        <form *ngIf="!accountCreate" fxLayout="row wrap" color="accent" novalidate [formGroup]="loginForm" (ngSubmit)="login(email,password)"  #loginform="ngForm">
+          <mat-form-field fxFlex="100" color="accent">
+            <input matInput formControlName="email" placeholder="email" [(ngModel)]="email" type="text" email required>
+            <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
+          </mat-form-field>
+          <mat-form-field color="accent" fxFlex="100">
+            <input matInput formControlName="password" placeholder="password" [(ngModel)]="password" type="password" required>
+            <mat-error *ngIf="formErrors.password">{{formErrors.password}}</mat-error>
+          </mat-form-field>
+        </form>
+        <form *ngIf="accountCreate" fxLayout="row wrap" novalidate [formGroup]="loginForm" (ngSubmit)="login(email,password)"  #loginform="ngForm">
+          <mat-form-field color="accent" fxFlex="100">
+            <input matInput formControlName="email" placeholder="email" [(ngModel)]="email" type="text" email required>
+            <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
+          </mat-form-field>
+          <mat-form-field color="accent" fxFlex="100">
+            <input matInput formControlName="password" placeholder="password" [(ngModel)]="password" type="password" required>
+            <mat-error *ngIf="formErrors.password">{{formErrors.password}}</mat-error>
+          </mat-form-field>
+          <mat-form-field color="accent" fxFlex="100">
+            <input matInput formControlName="name" placeholder="name" [(ngModel)]="name" type="text" required>
+            <mat-error *ngIf="formErrors.name">{{formErrors.name}}</mat-error>
+          </mat-form-field>
+        </form>
+      </mat-dialog-content>
+      <mat-dialog-actions fxLayoutAlign="space-between">
+        <button mat-button *ngIf="!accountCreate" (click)="login(email,password)" [disabled]="loginForm.invalid">Login</button>
+        <div fxFlex="100" >
+          <button mat-button *ngIf="accountCreate" (click)="signup(email,password,name)">Signup</button>
+          <button mat-button *ngIf="accountCreate" color="warn" (click)="accountCreate=!accountCreate" >Cancel</button>
+        </div>
+        <div class="signup" fxFlex="100" fxFlexAlign="center center">
+          <p *ngIf="!accountCreate">Don't have an account? Create one:</p>
+          <button mat-button *ngIf="!accountCreate" (click)="accountCreate=!accountCreate" >Signup</button>
+        </div>
+      </mat-dialog-actions>
+    </div> 

@@ -1,0 +1,11 @@
+<div class="mat-dialog" fxLayout="row wrap">
+    <div class="title" fxFlex="100" fxLayoutAlign="center">
+        <h1>Choose your avatar</h1>
+    </div>
+    <div *ngIf="pics" class="pics-container" fxLayout="row wrap" fxLayoutAlign="center end">
+        <div class="pic" fxFlex="33" fxFlex.lt-md="100"  *ngFor='let pic of pics' appHighlight>
+            <img matTooltip="{{pic.name}}" (click)="updatePropic(pic.src)" style="height:100px;width:100px" src={{pic.src}} alt="">
+        </div>
+    </div>
+</div>
+

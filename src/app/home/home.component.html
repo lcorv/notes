@@ -1,0 +1,89 @@
+<div class="container" [ngClass.lt-sm]="'container-sm'">
+    <div class="login-error" *ngIf="loginError">
+        <div><img class="err-img" src="https://firebasestorage.googleapis.com/v0/b/note-34e9a.appspot.com/o/public%2Fpropic%2FblackCat.svg?alt=media&token=29c1d2dc-6a0c-493d-94f1-20a7f13d8e5b" alt=""></div>
+        <div>
+            {{loginError}}
+        </div>
+    </div>
+    <div fxHide.lt-sm fxFlex="100" *ngIf="user" class="card-container" fxLayout="row wrap" fxLayoutAlign="start"
+    fxLayoutAlign.lt-sm="space-around center" fxLayoutGap="10px" fxLayoutGap.gt-xs="25px">
+        <mat-card  class="" fxLayout="row wrap" *ngFor="let note of notes" id={{note.id}} color="primary"
+            [ngStyle]="{'backgroundColor':note.color,'position':'absolute','zIndex' : note.zIndex, 'top':note.top+'px', 'left':note.left+'vw','boxShadow':(note.zIndex-95)+'px '+(note.zIndex-95)+'px 3px #0003'}"
+            matTooltipPosition="left" matTooltipShowDelay="1000" matTooltipMousedownHide="true"
+            matTooltip="Created: {{note.timestampCreated|date:'MMM/dd, HH:mm'}} &#10;&#13;Last change: {{note.timestampUpdated|date:'MMM/dd, HH:mm'}}" (dblclick)="edit(note)"
+            [fxHide]="showPreferred && !note.pref"
+            (contextmenu)="openMenu($event, clickHoverMenuTrigger,trigger)" appMove appContrast>
+            <button #trigger class="menuTrigger" #clickHoverMenuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu"
+                disabled></button>
+            <mat-card-header fxLayoutAlign="space-between start" fxFlex="100">
+                <mat-card-title fxFlex>
+                    <span>
+                        {{note.title|titlecase}}
+                    </span>
+
+                    <button class="deleteButton" mat-icon-button (click)="deleteNote(note)">&times;</button>
+                </mat-card-title>
+                <fa-icon *ngIf="!note.pref" (click)="like(note)" [icon]="regStar" class="pref" fxFlexAlign="start">
+                </fa-icon>
+                <fa-icon *ngIf="note.pref" (click)="like(note)" [icon]="faStar" class="pref" fxFlexAlign="start">
+                </fa-icon>
+            </mat-card-header>
+            <mat-card-content fxFlex="100">
+                <pre>{{note.content}}</pre>
+            </mat-card-content>
+            <div fxHide.gt-xs fxFlex="100" fxLayoutAlign="end end">
+                 <button mat-mini-fab mat-raised-button (click)="edit(note)"><fa-icon [icon]="faEdit"></fa-icon></button>
+            </div>
+            <mat-menu #menu="matMenu">
+                <button (click)="moveUp(note)" mat-menu-item>
+                    <span>Move up</span>
+                </button>
+                <button (click)="moveDown(note)" mat-menu-item>
+                    <span>Move down</span>
+                </button>
+                <button (click)="foreground(note)" mat-menu-item>
+                    <span>Move to foreground</span>
+                </button>
+                <button (click)="background(note)" mat-menu-item>
+                    <span>Move to background</span>
+                </button>
+            </mat-menu>
+        </mat-card>
+    </div>
+    <div fxHide.gt-xs fxFlex="100" *ngIf="user" class="card-container-sm" fxLayout="row wrap" fxLayoutAlign="space-around center"
+    fxLayoutAlign.lt-sm="space-around start" fxLayoutGap="0px" fxLayoutGap.gt-xs="25px">
+        <mat-card  class="card-sm" fxLayout="row wrap" *ngFor="let note of notes" id={{note.id}} color="primary"
+            [ngStyle]="{'backgroundColor':note.color,'zIndex': note.zIndex,'boxShadow':'2px 2px 3px #0004'}"
+            matTooltipPosition="left" matTooltipShowDelay="1000" matTooltipMousedownHide="true"
+            matTooltip="Created: {{note.timestampCreated|date:'MMM/dd, HH:mm'}} &#10;&#13;Last change: {{note.timestampUpdated|date:'MMM/dd, HH:mm'}}"
+            [fxHide]="showPreferred && !note.pref"
+            appContrast>
+            <mat-card-header fxLayoutAlign="space-between start" fxFlex="100">
+                <mat-card-title fxFlex>
+                    <span>
+                        {{note.title|titlecase}}
+                    </span>
+                    <button class="deleteButton" mat-icon-button (click)="deleteNote(note)">&times;</button>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxFlex="100">
+                <pre>
+{{note.content}}
+                </pre>
+            </mat-card-content>
+            <div class="pref-container" fxFlex="10" fxLayoutAlign="start center">
+                <fa-icon *ngIf="!note.pref" (click)="like(note)" [icon]="regStar" class="pref" >
+                </fa-icon>
+                <fa-icon *ngIf="note.pref" (click)="like(note)" [icon]="faStar" class="pref" >
+                </fa-icon>
+            </div>
+            <div fxFlex="90" fxLayoutAlign="end end">
+                 <button mat-mini-fab mat-raised-button (click)="edit(note)"><fa-icon [icon]="faEdit"></fa-icon></button>
+            </div>
+        </mat-card>
+    </div>
+    <div class="actionsButtons">
+        <button mat-fab  matTooltip="Display only preferites" [disabled]="!user" color="primary" (click)="showPref()"><fa-icon *ngIf="showPreferred"[icon]="faStar"></fa-icon><fa-icon *ngIf="!showPreferred" [icon]="regStar"></fa-icon></button>
+        <button mat-fab [disabled]="!user||showPreferred" color="primary" (click)="createNote()"><fa-icon [icon]="icons.faPlus"></fa-icon></button>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="dialog" >
+    <mat-dialog-content fxLayoutAlign="center center">
+        <h4>Are you sure you want delete this note?</h4>
+    </mat-dialog-content>
+    <mat-dialog-actions >
+        <button mat-raised-button color="warn" (click)="delete()" >Delete</button>
+        <button mat-raised-button (click)="dialogRef.close()" >Cancel</button>
+    </mat-dialog-actions>
+</div>
